@@ -40,16 +40,12 @@ async function scrapeCodeforcesProblem(
 		});
 		const page = await browser.newPage();
 
-		console.log("after page");
-
 		await page.setExtraHTTPHeaders({
 			"User-Agent":
 				"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
 		});
 
 		await page.goto(url, { waitUntil: "domcontentloaded" });
-
-		console.log("after goto");
 
 		// Remove async from page.evaluate() - it's not supported
 		const details: PageEvaluateResult = await page.evaluate(() => {
@@ -95,13 +91,11 @@ async function scrapeCodeforcesProblem(
 				"Output description not found";
 
 			// Extract sample tests
-			console.log("trying to sample test cases");
 			const sampleTestsNode = document.querySelector(".sample-tests");
 			let tests: Array<{ input: string; output: string }> = [];
 
 			const testNode = sampleTestsNode?.querySelector(".sample-test");
 			if (testNode?.children && testNode?.children.length > 2) {
-				console.log("error here");
 				return {
 					error: "Depricated/Not Found",
 				};
