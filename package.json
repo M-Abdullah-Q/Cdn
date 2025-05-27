@@ -20,6 +20,7 @@
 	},
 	"devDependencies": {
 		"@types/cors": "^2.8.18",
+		"@types/puppeteer": "^7.0.4",
 		"prettier": "3.5.3",
 		"typescript": "^5.8.3"
 	}
