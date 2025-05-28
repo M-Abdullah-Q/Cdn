@@ -4,7 +4,7 @@ import cors from "cors";
 
 const app = express();
 const corsOptions = {
-	origin: ["http://localhost:3000", "https://coden-cf.vercel.app/"],
+	origin: [],
 };
 app.use(cors(corsOptions));
 app.use(express.json());
